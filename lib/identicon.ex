@@ -22,6 +22,8 @@ defmodule Identicon do
     hex
     |> Enum.chunk_every(3, 3, :discard)
     |> Enum.map(&mirrow_row/1)
+    |> List.flatten()
+    |> Enum.with_index()
   end
 
   def mirrow_row([first, second | _tail] = row) do
