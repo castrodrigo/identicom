@@ -20,6 +20,6 @@ defmodule Identicon do
 
   def build_grid(%Identicon.Image{hex: hex}) do
     hex
-    |> Enum.chunk_every(3)
+    |> Enum.chunk_every(3, 3, :discard)
   end
 end
