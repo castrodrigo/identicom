@@ -7,6 +7,7 @@ defmodule Identicon do
     |> filter_tofill_squares
     |> build_pixel_map
     |> draw_image
+    |> save(input)
   end
 
   def hash_input(input) do
@@ -66,5 +67,9 @@ defmodule Identicon do
     end)
 
     :egd.render(canvas)
+  end
+
+  def save(image, input) do
+    File.write!("#{input}_identicon.png", image)
   end
 end
