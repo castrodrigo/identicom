@@ -4,6 +4,7 @@ defmodule Identicon do
     |> hash_input
     |> pick_color
     |> build_grid
+    |> filter_tofill_squares
   end
 
   def hash_input(input) do
@@ -31,5 +32,11 @@ defmodule Identicon do
 
   def mirrow_row([first, second | _tail] = row) do
     row ++ [second, first]
+  end
+
+  def filter_tofill_squares(%Identicon.Image{grid: grid} = image) do
+    filtered = Enum.filter(grid, fn {code, _index} -> rem(code, 2) == 0 end)
+
+    %Identicon.Image{image | grid: filtered}
   end
 end
