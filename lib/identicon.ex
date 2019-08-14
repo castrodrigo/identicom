@@ -12,7 +12,7 @@ defmodule Identicon do
     |> hash_input
     |> pick_color
     |> build_grid
-    |> filter_tofill_squares
+    |> filter_odd_squares
     |> build_pixel_map
     |> draw_image
     |> save(input)
@@ -64,7 +64,7 @@ defmodule Identicon do
     Detects odd entries in the list and filter them, keeping the even as indexes to fill.
     Returns %Identicon.Image struct.
   """
-  def filter_tofill_squares(%Identicon.Image{grid: grid} = image) do
+  def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
     filtered = Enum.filter(grid, fn {code, _index} -> rem(code, 2) == 0 end)
 
     %Identicon.Image{image | grid: filtered}
