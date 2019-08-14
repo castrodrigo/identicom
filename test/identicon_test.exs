@@ -13,6 +13,13 @@ defmodule IdenticonTest do
     assert hex == hex2
   end
 
+  test "build_grid should return indexed list based on initial data" do
+    list_row = [1, 5, 9, 12, 26, 90, 17, 58]
+    %Identicon.Image{grid: output} = Identicon.build_grid(%Identicon.Image{hex: list_row})
+
+    assert output = [{1, 1}, {5, 2}, {9, 3}, {12, 4}, {26, 5}, {90, 6}]
+  end
+
   test "mirror_row should tanspose a copy of idxs 1,2 to idxs 5,4" do
     list_row = [1, 2, 3]
 
