@@ -1,4 +1,9 @@
 defmodule Identicon do
+  @moduledoc """
+    Generates a Identicon type of Avatar based in a String input.
+    Each String will always generate the same shaped image.
+  """
+
   def main(input) do
     input
     |> hash_input
