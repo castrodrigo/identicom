@@ -27,4 +27,10 @@ defmodule IdenticonTest do
 
     assert output == [{32, 3}, {44, 4}]
   end
+
+  test "save can write on filesystem" do
+    status = Identicon.save("image", "test_save")
+
+    assert status == :ok
+  end
 end
