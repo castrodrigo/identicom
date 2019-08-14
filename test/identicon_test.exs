@@ -12,5 +12,11 @@ defmodule IdenticonTest do
 
     assert hex == hex2
   end
+
+  test "mirror_row should tanspose a copy of idxs 1,2 to idxs 5,4" do
+    list_row = [1, 2, 3]
+
+    assert Identicon.mirrow_row(list_row) == [1, 2, 3, 2, 1]
+  end
   end
 end
