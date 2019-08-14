@@ -28,6 +28,15 @@ defmodule IdenticonTest do
     assert output == [{32, 3}, {44, 4}]
   end
 
+  test "build_pixel_map should generate tuples of 50px X 50px relative to their position 0" do
+    list_row_with_tuples = [{32, 3}, {44, 4}]
+
+    %Identicon.Image{pixel_map: output} =
+      Identicon.build_pixel_map(%Identicon.Image{grid: list_row_with_tuples})
+
+    assert output == [{{150, 0}, {200, 50}}, {{200, 0}, {250, 50}}]
+  end
+
   test "save can write on filesystem" do
     status = Identicon.save("image", "test_save")
 
